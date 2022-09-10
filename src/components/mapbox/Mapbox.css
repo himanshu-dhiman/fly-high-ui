@@ -1,0 +1,9 @@
+.mapbox {
+    text-align: center;
+}
+
+.map-container {
+    width: 600px;
+    height: 400px;
+    margin: auto;
+}

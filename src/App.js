@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import AutoComplete from './components/autocomplete/Autocomplete';
+import Mapbox from './components/mapbox/Mapbox';
 
 function App() {
+
+  const [tripDetails, setTripDetails] = useState();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='autocomplete-container'>
+        <AutoComplete
+          tripDetailsCallback={setTripDetails}
+        ></AutoComplete>
+      </div>
+
+      <div className='mapbox-container'>
+        {!!tripDetails &&
+          (<Mapbox tripDetails={tripDetails}>
+          </Mapbox>
+          )}
+      </div>
     </div>
   );
 }
